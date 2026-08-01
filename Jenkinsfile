@@ -1,15 +1,22 @@
 pipeline {
     agent any 
+    environment {
+              AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+              AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+              AWS_DEFAULT_REGION    = 'ap-south-1'
+              git_url = "https://github.com/pervinders/devops.git"
+           }
         stages {
             stage("Terraform") {
                 steps {
-                    echo "Checking out from the program"
+                 echo "Clonning Github URL"
+                 sh "git clone ${env.git_url}"
+                 sh "cd devops/terraform"
+                 sh "terraform init"
+                 sh "terraform plan"
                 }
-                steps{
-                     echo "second step within program "
-                      }
             }
-            stage("Git checkout to branch") {
+            stage("Creating AWS infrastructure") {
                 steps {
                 echo "On to the development stage"
                  }

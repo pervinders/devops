@@ -10,6 +10,14 @@ pipeline {
             stage("Terraform") {
                 steps {
                  echo "Clonning Github URL"
+                 sh '''
+                     if [-d devops]; then 
+                        echo "Repo already cloned"
+                     else 
+                        echo "Cloning the Repo"
+                        git clone ${env.git_url}
+                     fi
+                    '''
                  sh "git clone ${env.git_url}"
                  dir("devops/terraform") {
  sh "cd devops/terraform"

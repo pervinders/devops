@@ -11,7 +11,7 @@ pipeline {
                 steps {
                  echo "Clonning Github URL"
                  sh '''
-                     if [-d devops]; then 
+                     if [ -d "devops" ]; then 
                         echo "Repo already cloned"
                      else 
                         echo "Cloning the Repo"

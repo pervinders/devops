@@ -1,12 +1,15 @@
 pipeline {
     agent any 
         stages {
-            stage("Checkout") {
+            stage("Terraform") {
                 steps {
                     echo "Checking out from the program"
                 }
+                steps{
+                     echo "second step within program "
+                      }
             }
-            stage("Development") {
+            stage("Git checkout to branch") {
                 steps {
                 echo "On to the development stage"
                  }

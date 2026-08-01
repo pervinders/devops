@@ -16,7 +16,7 @@ pipeline {
                 echo "On to the Testing stage"
                     }
             }
-            stage("Deployment on to the production enviroenment") {
+            stage("Production") {
                 steps {
                 echo "Production Deployment in production"
                     }

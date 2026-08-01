@@ -11,9 +11,12 @@ pipeline {
                 steps {
                  echo "Clonning Github URL"
                  sh "git clone ${env.git_url}"
-                 sh "cd devops/terraform"
+                 dir("devops/terraform") {
+ sh "cd devops/terraform"
                  sh "terraform init"
                  sh "terraform plan"
+
+                  }
                 }
             }
             stage("Creating AWS infrastructure") {
